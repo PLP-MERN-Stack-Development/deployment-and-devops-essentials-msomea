@@ -22,7 +22,11 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 function connectDB() {
   try {
-    mongoose.connect(process.env.MONGO_URI);
+    mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      maxPoolSize: parseInt(process.env.MONGO_MAX_POOL_SIZE || "10", 10)
+    });
   } catch (error) {
     console.error("Failed to connect to MongoDB", error)
     process.exit(1)
@@ -33,12 +37,7 @@ function connectDB() {
 function runServer() {
   try {
     connectDB();
-    app.listen(PORT, () => console.table({
-      MONGO_CONNECTED: mongoose.connection.readyState === 2 ? "Yes" : "No",
-      MONGO_URI: process.env.MONGO_URI,
-      PORT: process.env.PORT || 5000,
-      SEVER_URL: `http://localhost:${PORT}`,
-    }));
+    app.listen(PORT, () => console.log("MongoDB connected"));
   } catch (error) {
     console.error("Error in starting the Server", error);
   }
