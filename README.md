@@ -1,77 +1,102 @@
-# Deployment and DevOps for MERN Applications
+## MERN Blog Application
 
-This assignment focuses on deploying a full MERN stack application to production, implementing CI/CD pipelines, and setting up monitoring for your application.
+A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with user authentication, CRUD functionality, category management, comments, and responsive UI with dark mode support.
 
-## Assignment Overview
+## Features
 
-You will:
-1. Prepare your MERN application for production deployment
-2. Deploy the backend to a cloud platform
-3. Deploy the frontend to a static hosting service
-4. Set up CI/CD pipelines with GitHub Actions
-5. Implement monitoring and maintenance strategies
+* User registration and login (JWT authentication)
+* Create, read, update, delete (CRUD) blog posts
+* Add categories for posts (admin-only)
+* Add comments on posts
+* Responsive UI with light/dark mode toggle
+* Sticky navigation and footer
+* Slug generation for SEO-friendly URLs
+* Tags for posts and filtering capability
+* Image upload support
 
-## Getting Started
+## Project Structure
+      mern-blog/
+      ├── client/                 # React front-end
+      │   ├── public/
+      │   ├── src/
+      │   │   ├── components/     # Navbar, Footer, reusable UI components
+      │   │   ├── pages/          # HomePage, PostPage, CreatePost, CategoryCreate
+      │   │   ├── services/       # Axios API service
+      │   │   ├── context/        # AuthContext for user authentication
+      │   │   └── App.jsx
+      │   └── package.json
+      ├── server/                 # Express.js backend
+      │   ├── config/             # Database and environment config
+      │   ├── controllers/        # API controllers for posts, categories, auth
+      │   ├── models/             # Mongoose models: User, Post, Category
+      │   ├── routes/             # API routes
+      │   ├── middleware/         # Auth and error handling
+      │   └── server.js
+      └── README.md
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week7-Assignment.md` file
-4. Use the provided templates and configuration files as a starting point
+## Technologies Used
 
-## Files Included
+* Frontend: React.js, React Router, Axios, Context API
+* Backend: Node.js, Express.js, Mongoose, MongoDB
+* Authentication: JWT (JSON Web Tokens)
+* Styling: CSS, responsive design, dark mode
+* Utilities: Slug generation, input validation, error handling
 
-- `Week7-Assignment.md`: Detailed assignment instructions
-- `.github/workflows/`: GitHub Actions workflow templates
-- `deployment/`: Deployment configuration files and scripts
-- `.env.example`: Example environment variable templates
-- `monitoring/`: Monitoring configuration examples
+## Installation & Setup
+### Clone the repository
+```
+git clone https://github.com/yourusername/mern-blog.git
+cd mern-blog
+```
+### Setup Backend
+```
+cd server
+npm install
+```
+### Create a .env file in the server/ folder:
+```
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+### Start backend server:
+```
+npm run dev
+```
+### Setup Frontend
+```
+cd ../client
+npm install
+```
+### Create a .env file in the client/ folder (optional for API URL):
+```
+VITE_API_URL=http://localhost:5000/api
+```
+### Start fronend
+```
+npm run dev
+```
 
-## Requirements
+## Usage
 
-- A completed MERN stack application from previous weeks
-- Accounts on the following services:
-  - GitHub
-  - MongoDB Atlas
-  - Render, Railway, or Heroku (for backend)
-  - Vercel, Netlify, or GitHub Pages (for frontend)
-- Basic understanding of CI/CD concepts
+1. Register a new user.
 
-## Deployment Platforms
+2. Log in with your account.
 
-### Backend Deployment Options
-- **Render**: Easy to use, free tier available
-- **Railway**: Developer-friendly, generous free tier
-- **Heroku**: Well-established, extensive documentation
+3. Create posts and add categories (if admin).
 
-### Frontend Deployment Options
-- **Vercel**: Optimized for React apps, easy integration
-- **Netlify**: Great for static sites, good CI/CD
-- **GitHub Pages**: Free, integrated with GitHub
+4. View posts, add comments, and explore tags/categories.
 
-## CI/CD Pipeline
+5. Toggle light/dark mode using the button in navbar.
 
-The assignment includes templates for setting up GitHub Actions workflows:
-- `frontend-ci.yml`: Tests and builds the React application
-- `backend-ci.yml`: Tests the Express.js backend
-- `frontend-cd.yml`: Deploys the frontend to your chosen platform
-- `backend-cd.yml`: Deploys the backend to your chosen platform
+6. Navigate using the sticky navbar; footer remains at the bottom.
 
-## Submission
+## Author
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+Raphael Msomea – Developer
 
-1. Complete all deployment tasks
-2. Set up CI/CD pipelines with GitHub Actions
-3. Deploy both frontend and backend to production
-4. Document your deployment process in the README.md
-5. Include screenshots of your CI/CD pipeline in action
-6. Add URLs to your deployed applications
+Email: msomearaphael@gmail.com
 
-## Resources
+##  License
 
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [MongoDB Atlas Documentation](https://docs.atlas.mongodb.com/)
-- [Render Documentation](https://render.com/docs)
-- [Railway Documentation](https://docs.railway.app/)
-- [Vercel Documentation](https://vercel.com/docs)
-- [Netlify Documentation](https://docs.netlify.com/) 
+This project is licensed under the MIT License – see the LICENSE file for details.
